@@ -16,4 +16,4 @@ if out_of_guesses:
     print("You lose")
 else:
     print("You got it!")
-    
+# by atharv
