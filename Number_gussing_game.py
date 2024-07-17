@@ -15,5 +15,5 @@ while guess != guess_number and not(out_of_guesses):
 if out_of_guesses:
     print("You lose")
 else:
-    print("You got it!")
+    print("You got it player")
 # by atharv
