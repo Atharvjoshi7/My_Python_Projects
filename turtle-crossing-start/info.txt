@@ -1,0 +1,1 @@
+It is an turtle game just copy and run the main.py code in a compiler. I recommend Pycharm or vs code.
