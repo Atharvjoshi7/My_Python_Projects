@@ -4,7 +4,6 @@ import random
 import pyperclip
 import json
 
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -25,7 +24,6 @@ def generate_password():
     password_entry.insert(0, password)
     pyperclip.copy(password)
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
     website = website_entry.get()
     email = email_entry.get()
@@ -44,11 +42,11 @@ def save():
             with open("data.json", "r") as data_file:
                 file_content = data_file.read()
                 if len(file_content) == 0:
-                    data = {}  # Initialize as an empty dictionary if file is empty
+                    data = {}
                 else:
                     data = json.loads(file_content)
         except FileNotFoundError:
-            data = {}  # Initialize as an empty dictionary if the file doesn't exist
+            data = {}
 
         data.update(new_data)
 
@@ -58,15 +56,13 @@ def save():
         website_entry.delete(0, END)
         password_entry.delete(0, END)
 
-#------------------------------- search -------------------------------------#
 def find_password():
     website = website_entry.get()
     try:
         with open("data.json", "r") as data_file:
-            # Check if the file is empty
             file_content = data_file.read()
             if len(file_content) == 0:
-                raise FileNotFoundError  # Treat empty file as not found
+                raise FileNotFoundError
             data = json.loads(file_content)
     except FileNotFoundError:
         messagebox.showinfo(title="Error", message="No data found.")
@@ -79,9 +75,6 @@ def find_password():
             messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
         else:
             messagebox.showinfo(title="Error", message=f"No details for {website} exist!")
-
-
-#---------------------------- UI SETUP -------------------------------#
 
 window = Tk()
 window.title("Password Manager")
@@ -99,7 +92,6 @@ email_label.grid(row=2, column=0)
 password_label = Label(text="password: ")
 password_label.grid(row=3, column=0)
 
-
 website_entry = Entry(width=21)
 website_entry.grid(row=1, column=1)
 website_entry.focus()
@@ -111,15 +103,11 @@ email_entry.insert(0, "atharvjoshi123@gmail.com")
 password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1)
 
-
-#Buttons
 search_button = Button(text="Search", width=13, command=find_password)
 search_button.grid(row=1, column=2)
 generate_password_button = Button(text="Generate Password", command=generate_password)
 generate_password_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
-
-
 
 window.mainloop()
