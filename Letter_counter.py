@@ -16,6 +16,7 @@ def lettercount():
 
     totallength = len(firstletter)+len(lastletter)
 
+ 
     print(f"The total length in your namer is {totallength}")
     print("Thank You for using me!")
 
