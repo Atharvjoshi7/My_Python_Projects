@@ -9,3 +9,4 @@ calculate = (billNum / numberOfPeople) * Btip
 TotalBill = round(calculate)
 
 print(f"Each person should pay {TotalBill}")
+#used to calculate tips
